@@ -12,7 +12,7 @@ function App() {
   return (
     <div>
       <h1>Hospital Patient Manager</h1>
-      <PatientForm addPatient={addPatient} />
+      <PatientForm patients={patients} addPatient={addPatient} />
       <p>Total: {patients.length}</p>
     </div>
   )
