@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-function PatientForm() {
+function PatientForm({ addPatient }) {
   const [name, setName] = useState('')
   const [age, setAge] = useState('')
   const [department, setDepartment] = useState('')
@@ -8,12 +8,17 @@ function PatientForm() {
   function handleSubmit(e) {
     e.preventDefault()
 
+    if (name === '' || age === '' || department === '') {
+      return
+    }
+
     const patient = {
       name: name,
       age: age,
       department: department,
     }
     console.log(patient)
+    addPatient(patient)
 
     setName('')
     setAge('')
