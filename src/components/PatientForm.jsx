@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import './css/PatientForm.css'
 
 function PatientForm({ patients, addPatient, deletePatient }) {
   const [name, setName] = useState('')
@@ -27,7 +28,7 @@ function PatientForm({ patients, addPatient, deletePatient }) {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form className="card form" onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="Patient Name"
@@ -46,23 +47,27 @@ function PatientForm({ patients, addPatient, deletePatient }) {
           value={department}
           onChange={(e) => setDepartment(e.target.value)}
         />
-        <button type="submit">Add Patient</button>
+        <button type="submit" className="add-btn">Add Patient</button>
       </form>
 
-      <h2>Patients</h2>
+      <div className="card">
+        <h2>Patients</h2>
 
-      {patients.length === 0 && <p>No patients yet.</p>}
+        {patients.length === 0 && <p>No patients yet.</p>}
 
-      {patients.map((patient, index) => (
-        <div key={index}>
-          <span>
-            {index + 1}. {patient.name}
-          </span>
-          <span>Age: {patient.age}</span>
-          <span>Department: {patient.department}</span>
-          <button onClick={() => deletePatient(index)}>Delete</button>
-        </div>
-      ))}
+        {patients.map((patient, index) => (
+          <div className="patient" key={index}>
+            <span className="patient-name">
+              {index + 1}. {patient.name}
+            </span>
+            <span className="patient-age">Age: {patient.age}</span>
+            <span className="patient-dep">Department: {patient.department}</span>
+            <button className="delete-btn" onClick={() => deletePatient(index)}>
+              Delete
+            </button>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }

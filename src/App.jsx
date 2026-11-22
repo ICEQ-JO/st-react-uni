@@ -14,14 +14,13 @@ function App() {
   }
 
   return (
-    <div>
-      <h1>Hospital Patient Manager</h1>
+    <div className="app">
+      <h1 className="title">Hospital Patient Manager</h1>
       <PatientForm
         patients={patients}
         addPatient={addPatient}
         deletePatient={deletePatient}
       />
-      <p>Total: {patients.length}</p>
     </div>
   )
 }
