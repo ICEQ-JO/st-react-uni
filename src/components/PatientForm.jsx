@@ -5,8 +5,23 @@ function PatientForm() {
   const [age, setAge] = useState('')
   const [department, setDepartment] = useState('')
 
+  function handleSubmit(e) {
+    e.preventDefault()
+
+    const patient = {
+      name: name,
+      age: age,
+      department: department,
+    }
+    console.log(patient)
+
+    setName('')
+    setAge('')
+    setDepartment('')
+  }
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <input
         type="text"
         placeholder="Patient Name"
@@ -26,7 +41,6 @@ function PatientForm() {
         onChange={(e) => setDepartment(e.target.value)}
       />
       <button type="submit">Add Patient</button>
-      <p>{name}</p>
     </form>
   )
 }
