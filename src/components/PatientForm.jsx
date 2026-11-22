@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-function PatientForm({ patients, addPatient }) {
+function PatientForm({ patients, addPatient, deletePatient }) {
   const [name, setName] = useState('')
   const [age, setAge] = useState('')
   const [department, setDepartment] = useState('')
@@ -60,7 +60,7 @@ function PatientForm({ patients, addPatient }) {
           </span>
           <span>Age: {patient.age}</span>
           <span>Department: {patient.department}</span>
-          <button>Delete</button>
+          <button onClick={() => deletePatient(index)}>Delete</button>
         </div>
       ))}
     </div>

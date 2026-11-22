@@ -9,10 +9,18 @@ function App() {
     setPatients([...patients, patient])
   }
 
+  function deletePatient(index) {
+    setPatients(patients.filter((p, i) => i !== index))
+  }
+
   return (
     <div>
       <h1>Hospital Patient Manager</h1>
-      <PatientForm patients={patients} addPatient={addPatient} />
+      <PatientForm
+        patients={patients}
+        addPatient={addPatient}
+        deletePatient={deletePatient}
+      />
       <p>Total: {patients.length}</p>
     </div>
   )
